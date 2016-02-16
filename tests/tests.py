@@ -601,6 +601,10 @@ class IssueTests(BaseTestCase):
         # Fail because neither Extra nor Catehory changed, but something in between
         self.assertEqual([], list(Extra.objects.filter(post__category__title=title).cache()))
 
+    def test_177_cached_property(self):
+        game = Game.objects.get(pk=1)
+        user = game.users_cached.get(pk=1)  # 'maximum recursion depth exceeded [..]'
+
 
 @unittest.skipUnless(os.environ.get('LONG'), "Too long")
 class LongTests(BaseTestCase):

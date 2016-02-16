@@ -80,5 +80,18 @@
       "tag": 10,
       "to_tag": 5
     }
+  },
+  {
+    "model": "tests.game",
+    "pk": 1,
+    "fields": {
+    }
+  },
+  {
+    "model": "tests.gameuser",
+    "pk": 1,
+    "fields": {
+      "game_id": 1
+    }
   }
 ]

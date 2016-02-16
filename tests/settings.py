@@ -103,6 +103,8 @@ CACHEOPS = {
     'tests.*': {},
     'tests.noncachedvideoproxy': None,
     'tests.noncachedmedia': None,
+    'tests.game': {'ops': 'all'},
+    'tests.gameuser': {'ops': 'all'},
     'auth.*': {}
 }
 

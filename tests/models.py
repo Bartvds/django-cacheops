@@ -8,6 +8,9 @@ from django.db.models import sql
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User
 # Deprecated this thing in Django 1.8 and removed in 1.10
+
+from funcy import cached_property
+
 try:
     from django.db.models import SubfieldBase
 except ImportError:
@@ -266,3 +269,17 @@ class M2MWithCharId(models.Model):
 
 from django.db.models.signals import post_save
 post_save.connect(set_boolean_true, sender=One)
+
+
+# 177
+class Game(models.Model):
+    @cached_property
+    def users_cached(self):
+        return self.users.all()
+
+
+class GameUser(models.Model):
+    game = models.ForeignKey(
+        Game,
+        related_name='users',
+    )
